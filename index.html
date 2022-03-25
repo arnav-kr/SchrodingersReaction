@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vite-vanilla-tailwind</title>
+</head>
+
+<body class="dark:bg-gray-900 bg-gray-50 text-gray-900 dark:text-gray-50">
+  <main class="w-screen h-screen relative">
+    <div class="button-wrapper absolute inset-0 w-full h-full flex flex-col justify-center items-center">
+      <button id="btn" class="z-10">
+        <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+          class="w-12 h-12 transition-all duration-300 dark:fill-slate-100 fill-slate-900">
+          <path
+            d="M13.12 2.06L7.58 7.6c-.37.37-.58.88-.58 1.41V19c0 1.1.9 2 2 2h9c.8 0 1.52-.48 1.84-1.21l3.26-7.61C23.94 10.2 22.49 8 20.34 8h-5.65l.95-4.58c.1-.5-.05-1.01-.41-1.37-.59-.58-1.53-.58-2.11.01zM3 21c1.1 0 2-.9 2-2v-8c0-1.1-.9-2-2-2s-2 .9-2 2v8c0 1.1.9 2 2 2z" />
+        </svg>
+      </button>
+    </div>
+    <div class="reaction-container absolute inset-0 w-full h-full flex flex-col justify-center items-center">
+      <div class="w-80 h-80 flex justify-center items-end origin-center" id="reaction-wrapper">
+        <h2
+          class="like-count font-medium text-2xl bg-gray-200 dark:bg-gray-700 px-5 py-2 rounded-md flex items-center justify-center my-5"
+          id="like-count">+1</h2>
+      </div>
+    </div>
+  </main>
+  <script src="/src/main.js" type="module"></script>
+</body>
+
+</html>
