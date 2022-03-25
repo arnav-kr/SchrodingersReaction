@@ -60,7 +60,7 @@ export class PWAManager {
 
   init() {
     if (('serviceWorker' in navigator)) {
-      this.swManager = new ServiceWorkerManager(serviceWorkerPath);
+      this.swManager = new ServiceWorkerManager(this.serviceWorkerPath);
       this.swManager.init();
       window.addEventListener("load", () => {
         window.addEventListener('beforeInstallPrompt', (e) => {
