@@ -36,7 +36,6 @@ export class PWAManager {
     updateButton = null,
   }) {
     this.serviceWorkerPath = serviceWorkerPath;
-    this.swManager.init();
     this.deferredPrompt = null;
     this.refreshing = false;
 
@@ -62,6 +61,7 @@ export class PWAManager {
   init() {
     if (('serviceWorker' in navigator)) {
       this.swManager = new ServiceWorkerManager(serviceWorkerPath);
+      this.swManager.init();
       window.addEventListener("load", () => {
         window.addEventListener('beforeInstallPrompt', (e) => {
           e.preventDefault();
