@@ -69,12 +69,12 @@ function initSensor() {
     let y = event.gamma;
     let z = event.alpha;
     let threshold = 20;
-    if (x > threshold) {
+    if (x >= 0 || x >= 0) {
       console.log("Up");
       mode = "like";
       color = colors.green;
     }
-    if (x < -threshold) {
+    if (x < 0 || z < 0) {
       console.log("Down");
       mode = "dislike";
       color = colors.red;
