@@ -1,6 +1,6 @@
 import './css/style.css';
 // PWAManager
-import { PWAManager } from './PWAManager';
+import { PWAManager } from './js/PWAManager';
 let PWAManagerInstance = new PWAManager({
   serviceWorkerPath: './sw.js',
   beforeInstallPrompt: () => { },
