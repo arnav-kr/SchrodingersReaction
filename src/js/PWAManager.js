@@ -1,4 +1,4 @@
-import ServiceWorkerManager from '../serviceWorkerManager';
+import ServiceWorkerManager from './serviceWorkerManager';
 
 /**
  * @class PWAManager
