@@ -6,19 +6,25 @@
   "scope": "/",
   "start_url": "/",
   "orientation": "portrait",
-  "name": "vite-vanilla-tailwind",
-  "short_name": "vite-vanilla-tailwind",
+  "name": "Schrödinger's Reaction",
+  "short_name": "Schrödinger's Reaction",
   "lang": "en",
   "dir": "ltr",
   "categories": [
     "test"
   ],
-  "description": "Vite vanilla Tailwind Template.",
+  "description": "Schrödinger's Reaction",
   "icons": [
     {
       "src": "/assets/logo.png",
-      "sizes": "1024x404",
+      "sizes": "1024x1024",
       "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/logo.svg",
+      "sizes": "1024x1024",
+      "type": "image/svg+xml",
       "purpose": "any"
     }
   ]

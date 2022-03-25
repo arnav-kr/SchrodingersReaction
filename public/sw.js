@@ -25,6 +25,8 @@ defaultResponseURL = "/offline.html";
 const preCacheURLs = [
   defaultResponseURL,
   // "./",
+  "assets/logo.svg",
+  "assets/logo.png",
 ];
 
 

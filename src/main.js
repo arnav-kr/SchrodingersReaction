@@ -1,17 +1,16 @@
 import './css/style.css';
-// TODO: Uncomment the following lines to enable PWA Support
-// // PWAManager
-// import { PWAManager } from './PWAManager';
-// let PWAManagerInstance = new PWAManager({
-//   serviceWorkerPath: './sw.js',
-//   beforeInstallPrompt: () => { },
-//   appInstalled: () => { },
-//   controllerChange: () => { },
-//   installButton: null,
-//   updateButton: null,
-// });
-//
-// PWAManagerInstance.init();
+// PWAManager
+import { PWAManager } from './PWAManager';
+let PWAManagerInstance = new PWAManager({
+  serviceWorkerPath: './sw.js',
+  beforeInstallPrompt: () => { },
+  appInstalled: () => { },
+  controllerChange: () => { },
+  installButton: null,
+  updateButton: null,
+});
+
+PWAManagerInstance.init();
 
 let mode = "like";
 let icon = document.getElementById('icon');
@@ -43,7 +42,7 @@ if (window.DeviceOrientationEvent) {
   initSensor();
 }
 else {
-  console.log("Not supported");
+  alert("Your Device is a Potato!");
 }
 
 function initSensor() {

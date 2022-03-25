@@ -30,5 +30,5 @@ if (mode == "development") {
 export default defineConfig({
   plugins: [tailwindcss()],
   ...serverOptions,
-  // manifest: true, // uncomment for PWA support
+  manifest: true, // uncomment for PWA support
 })
