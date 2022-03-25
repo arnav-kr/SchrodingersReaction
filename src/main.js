@@ -69,7 +69,7 @@ function initSensor() {
       console.log("Down");
       color = "#ef4444";
     }
-    reactionWrapper.style.transform = `rotate(${360 - euler[2]}deg)`;
+    reactionWrapper.style.transform = `rotate(${360 - euler[1]}deg)`;
     console.log(euler);
   }
   sensor.onerror = (event) => {
