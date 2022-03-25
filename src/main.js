@@ -54,29 +54,44 @@ if (navigator.permissions) {
 }
 
 function initSensor() {
-  const options = { frequency: 60, coordinateSystem };
-  console.log(JSON.stringify(options));
-  sensor = relative ? new RelativeOrientationSensor(options) : new AbsoluteOrientationSensor(options);
-  sensor.onreading = () => {
-    let quaternion = sensor.quaternion;
-    let euler = ToEulerAngles(quaternion);
+  window.addEventListener('deviceorientation', function (event) {
+    let x = event.beta;
+    let y = event.gamma;
+    let z = event.alpha;
     let threshold = 30;
-    if (euler[0] > threshold) {
+    if (x > threshold) {
       console.log("Up");
       color = "#22c55e";
     }
-    if (euler[0] < -threshold) {
+    if (x < -threshold) {
       console.log("Down");
       color = "#ef4444";
     }
-    reactionWrapper.style.transform = `rotate(${euler[1]}deg)`;
-    console.log(euler[1], euler[1])
-    console.log(euler);
-  }
-  sensor.onerror = (event) => {
-    if (event.error.name == 'NotReadableError') {
-      console.log("Sensor is not available.");
-    }
-  }
-  sensor.start();
+    reactionWrapper.style.transform = `rotate(${z}deg)`;
+  });
+  // const options = { frequency: 60, coordinateSystem };
+  // console.log(JSON.stringify(options));
+  // sensor = relative ? new RelativeOrientationSensor(options) : new AbsoluteOrientationSensor(options);
+  // sensor.onreading = () => {
+  //   let quaternion = sensor.quaternion;
+  //   let euler = ToEulerAngles(quaternion);
+  //   let threshold = 30;
+  //   if (euler[0] > threshold) {
+  //     console.log("Up");
+  //     color = "#22c55e";
+  //   }
+  //   if (euler[0] < -threshold) {
+  //     console.log("Down");
+  //     color = "#ef4444";
+  //   }
+  //   reactionWrapper.style.transform = `rotate(${ euler[1]}deg)`;
+  //   console.log(euler[1], euler[1])
+  //   console.log(euler);
+  // }
+  // sensor.onerror = (event) => {
+  //   if (event.error.name == 'NotReadableError') {
+  //     console.log("Sensor is not available.");
+  //   }
+  // }
+  // sensor.start();
 }
