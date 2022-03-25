@@ -31,26 +31,31 @@ btn.addEventListener('click', () => {
   icon.style.fill = color;
 });
 
-let sensor;
+// if (navigator.permissions) {
+//   // https://w3c.github.io/orientation-sensor/#model
+//   Promise.all([navigator.permissions.query({ name: "accelerometer" }),
+//   navigator.permissions.query({ name: "magnetometer" }),
+//   navigator.permissions.query({ name: "gyroscope" })])
+//     .then(results => {
+//       if (results.every(result => result.state === "granted")) {
+//         initSensor();
+//       } else {
+//         console.log("Permission to use sensor was denied.");
+//       }
+//     }).catch(err => {
+//       console.log("Integration with Permissions API is not enabled, still try to start app.");
+//       initSensor();
+//     });
+// } else {
+//   console.log("No Permissions API, still try to start app.");
+//   initSensor();
+// }
 
-if (navigator.permissions) {
-  // https://w3c.github.io/orientation-sensor/#model
-  Promise.all([navigator.permissions.query({ name: "accelerometer" }),
-  navigator.permissions.query({ name: "magnetometer" }),
-  navigator.permissions.query({ name: "gyroscope" })])
-    .then(results => {
-      if (results.every(result => result.state === "granted")) {
-        initSensor();
-      } else {
-        console.log("Permission to use sensor was denied.");
-      }
-    }).catch(err => {
-      console.log("Integration with Permissions API is not enabled, still try to start app.");
-      initSensor();
-    });
-} else {
-  console.log("No Permissions API, still try to start app.");
+if (window.DeviceOrientationEvent) {
   initSensor();
+}
+else {
+  console.log("Not supported");
 }
 
 function initSensor() {
