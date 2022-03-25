@@ -21,12 +21,17 @@ import ToEulerAngles from './js/utils/toEulerAngles';
 const params = new URLSearchParams(new URL(window.location.href).search.slice(1));
 const relative = false
 const coordinateSystem = params.get("coord");
-let color = "#22c55e";
+const colors = {
+  red: "#ef4444",
+  green: "#22c55e",
+}
+let color = colors.green;
 let icon = document.getElementById('icon');
 let btn = document.getElementById('btn');
 let likeCount = document.getElementById('like-count');
 let reactionWrapper = document.getElementById('reaction-wrapper');
-
+let transform = 0, opacity = 1, mode = "like";
+let reactions = { likes: 0, dislikes: 0 };
 btn.addEventListener('click', () => {
   icon.style.fill = color;
 });
@@ -63,40 +68,30 @@ function initSensor() {
     let x = event.beta;
     let y = event.gamma;
     let z = event.alpha;
-    let threshold = 30;
+    let threshold = 20;
     if (x > threshold) {
       console.log("Up");
-      color = "#22c55e";
+      mode = "like";
+      color = colors.green;
     }
     if (x < -threshold) {
       console.log("Down");
-      color = "#ef4444";
+      mode = "dislike";
+      color = colors.red;
     }
-    reactionWrapper.style.transform = `rotate(${z}deg)`;
+    transform = z;
   });
-  // const options = { frequency: 60, coordinateSystem };
-  // console.log(JSON.stringify(options));
-  // sensor = relative ? new RelativeOrientationSensor(options) : new AbsoluteOrientationSensor(options);
-  // sensor.onreading = () => {
-  //   let quaternion = sensor.quaternion;
-  //   let euler = ToEulerAngles(quaternion);
-  //   let threshold = 30;
-  //   if (euler[0] > threshold) {
-  //     console.log("Up");
-  //     color = "#22c55e";
-  //   }
-  //   if (euler[0] < -threshold) {
-  //     console.log("Down");
-  //     color = "#ef4444";
-  //   }
-  //   reactionWrapper.style.transform = `rotate(${ euler[1]}deg)`;
-  //   console.log(euler[1], euler[1])
-  //   console.log(euler);
-  // }
-  // sensor.onerror = (event) => {
-  //   if (event.error.name == 'NotReadableError') {
-  //     console.log("Sensor is not available.");
-  //   }
-  // }
-  // sensor.start();
 }
+
+function animate() {
+  requestAnimationFrame(animate);
+  reactionWrapper.style.transform = `rotate(${transform}deg)`;
+  reactionWrapper.style.opacity = opacity;
+  if (mode == "like") {
+    likeCount.innerText = `+${reactions.likes}`;
+  }
+  else {
+    likeCount.innerText = `-${reactions.dislikes}`;
+  }
+}
+requestAnimationFrame(animate);
