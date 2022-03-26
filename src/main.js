@@ -15,12 +15,14 @@ PWAManagerInstance.init();
 let mode = "like";
 let icon = document.getElementById('icon');
 let btn = document.getElementById('btn');
+let tout = null;
 btn.addEventListener('click', () => {
   if (mode === "like") {
     console.log("Like");
     icon.classList.add("!fill-green-500");
     icon.classList.remove("!fill-red-500");
-    setTimeout(() => {
+    clearTimeout(tout);
+    tout = setTimeout(() => {
       icon.classList.remove("!fill-green-500");
       icon.classList.remove("!fill-red-500");
     }
@@ -30,7 +32,8 @@ btn.addEventListener('click', () => {
     console.log("Dislike");
     icon.classList.add("!fill-red-500");
     icon.classList.remove("!fill-green-500");
-    setTimeout(() => {
+    clearTimeout(tout);
+    tout = setTimeout(() => {
       icon.classList.remove("!fill-green-500");
       icon.classList.remove("!fill-red-500");
     }
