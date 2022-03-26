@@ -49,7 +49,7 @@ function initSensor() {
   window.addEventListener('deviceorientation', (event) => {
     let x = event.beta;
     let z = event.alpha;
-    if (x >= 0 || x >= 0) {
+    if (x >= 0 || z >= 0) {
       mode = "like";
     }
     if (x < 0 || z < 0) {
