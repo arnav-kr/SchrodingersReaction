@@ -1,5 +1,3 @@
-# Vite Vanilla Tailwind Template
+# Schrodinger's Reaction
 
-A Basic starter template for my vanilla vite projects using tailwindcss.
-
-Feel free to use this template for your own projects.
+Like or Dislike is just the matter of perspective
